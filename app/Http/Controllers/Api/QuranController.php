@@ -125,3 +125,4 @@ class QuranController extends Controller
     }
 }
 
+
