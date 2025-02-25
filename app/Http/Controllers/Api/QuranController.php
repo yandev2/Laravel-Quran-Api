@@ -118,7 +118,7 @@ class QuranController extends Controller
         $dataCollection = collect($data);
         $value = $dataCollection->where('number', $number);
         if(count($value) ==0){
-            return new ArrayResoruce(false, 'hadis tidak di temukan', null);
+            return new ArrayResoruce(false, 'hadis tidak di temukan.', null);
         }
         return new ArrayResoruce(true, '', $value);
        
