@@ -52,6 +52,17 @@ class QuranController extends Controller
         return new ArrayResoruce(true, '', $data);
     }
 
+    public function surahsearch($surah, $ayah){
+        $data = Storage::json('in_surah.json');
+        $data = collect($data)->filter(fn($v) => $v['data']['name']['transliteration']['id'] == $surah)->first()['data'];
+        
+        $value = $data['verses'];
+        if($ayah > count($value)){
+            return new ArrayResoruce(false, 'ayah tidak di temukan', null);
+        }
+        return new ArrayResoruce(true, '', $value[$ayah-1]);
+    }
+
     public function doa()
     {
         $data = Storage::json('in_doa.json');
@@ -99,5 +110,17 @@ class QuranController extends Controller
         ];
 
         return new ArrayResoruce(true, '', $response);
+    }
+
+    public function hadistsearch($name, $number)
+    {
+        $data = Storage::json('hadis/' . $name . '.json');
+        $dataCollection = collect($data);
+        $value = $dataCollection->where('number', $number);
+        if(count($value) ==0){
+            return new ArrayResoruce(false, 'hadis tidak di temukan', null);
+        }
+        return new ArrayResoruce(true, '', $value);
+       
     }
 }

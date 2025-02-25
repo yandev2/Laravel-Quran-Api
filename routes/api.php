@@ -12,6 +12,7 @@ Route::get('juz', [QuranController::class, 'juz']);
 Route::get('surah', [QuranController::class, 'surah']);
 Route::get('juz/{id}', [QuranController::class, 'detailjuz']);
 Route::get('surah/{id}', [QuranController::class, 'detailsurah']);
+Route::get('surahsearch/{surah}/{ayah}', [QuranController::class, 'surahsearch']);
 
 Route::get('doa', [QuranController::class, 'doa']);
 Route::get('doa/{id}', [QuranController::class, 'detaildoa']);
@@ -20,3 +21,4 @@ Route::get('asmaul', [QuranController::class, 'asmaul']);
 
 Route::get('hadist', [QuranController::class, 'hadist']);
 Route::get('hadist/{name}/{page}', [QuranController::class, 'hadistName']);
+Route::get('hadistsearch/{name}/{number}', [QuranController::class, 'hadistsearch']);
